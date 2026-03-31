@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miriam Costa Mántico - CV & Portafolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 20px;
+            background: #ddd;
+            object-fit: cover;
+        }
+
+        .profile h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .profile-subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .profile-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .experience-item, .education-item, .project-item {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover, .project-item:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .item-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .item-company, .item-date {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .item-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+        }
+
+        .contact-item i {
+            color: #667eea;
+            width: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .profile-header {
+                padding: 30px 20px;
+            }
+            
+            .profile h1 {
+                font-size: 2em;
+            }
+            
+            .profile-content {
+                padding: 30px 20px;
+            }
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile">
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/150" alt="Miriam Costa Mántico" class="profile-pic">
+                <h1>Miriam Costa Mántico</h1>
+                <p class="profile-subtitle">Desarrolladora Full Stack | Especialista en UX/UI</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/miriamcostamanticof/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/tuusuario" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:tuemail@example.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="profile-content">
+                <!-- Sobre mí -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Sobre mí</h2>
+                    <p>
+                        Desarrolladora Full Stack apasionada con más de X años de experiencia creando 
+                        soluciones digitales innovadoras. Especializada en React, Node.js, Python y diseño 
+                        UX/UI. Me encanta transformar ideas en productos funcionales y atractivos.
+                    </p>
+                    <a href="#" class="download-btn">📥 Descargar CV PDF</a>
+                </div>
+
+                <!-- Habilidades -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-cogs"></i> Habilidades</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fab fa-react"></i></div>
+                            <h3>React.js</h3>
+                            <div style="background: #667eea; height: 6px; border-radius: 3px; width: 85%; margin-top: 10px;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                            <h3>Node.js</h3>
+                            <div style="background: #667eea; height: 6px; border-radius: 3px; width: 80%; margin-top: 10px;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                            <h3>Python</h3>
+                            <div style="background: #667eea; height: 6px; border-radius: 3px; width: 90%; margin-top: 10px;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <h3>SQL/NoSQL</h3>
+                            <div style="background: #667eea; height: 6px; border-radius: 3px; width: 75%; margin-top: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experiencia -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiencia</h2>
+                    <div class="experience-item">
+                        <h3 class="item-title">Desarrolladora Full Stack</h3>
+                        <p class="item-company">Empresa XYZ</p>
+                        <p class="item-date">Enero 2022 - Presente</p>
+                        <p class="item-description">
+                            Desarrollo de aplicaciones web escalables usando React y Node.js. 
+                            Implementación de APIs RESTful y optimización de rendimiento.
+                        </p>
+                    </div>
+                    <div class="experience-item">
+                        <h3 class="item-title">Desarrolladora Frontend</h3>
+                        <p class="item-company">Startup ABC</p>
+                        <p class="item-date">Junio 2020 - Diciembre 2021</p>
+                        <p class="item-description">
+                            Creación de interfaces responsive con React y Vue.js. 
+                            Colaboración con equipos de diseño UX/UI.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Proyectos -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> Proyectos Destacados</h2>
+                    <div class="projects-grid">
+                        <div class="project-item">
+                            <h3 class="item-title">E-commerce Platform</h3>
+                            <p class="item-date">React | Node.js | MongoDB</p>
+                            <p>Plataforma de comercio electrónico completa con sistema de pagos integrado.</p>
+                            <a href="#" class="download-btn" style="font-size: 0.9em; padding: 8px 20px;">Ver Proyecto</a>
+                        </div>
+                        <div class="project-item">
+                            <h3 class="item-title">Dashboard Analytics</h3>
+                            <p class="item-date">Vue.js | D3.js | Python</p>
+                            <p>Dashboard interactivo con visualizaciones de datos en tiempo real.</p>
+                            <a href="#" class="download-btn" style="font-size: 0.9em; padding: 8px 20px;">Ver Proyecto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educación -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Educación</h2>
+                    <div class="education-item">
+                        <h3 class="item-title">Grado en Ingeniería Informática</h3>
+                        <p class="item-company">Universidad de Barcelona</p>
+                        <p class="item-date">2016 - 2020</p>
+                    </div>
+                </div>
+
+                <!-- Contacto -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-address-book"></i> Contacto</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>miriam@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+34 123 456 789</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Barcelona, España</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
