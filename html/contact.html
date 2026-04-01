@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Miriam Costa Manticof</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Miriam Costa Manticof</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="cv.html">📄 CV</a></li>
+                <li><a href="proyectos.html">🚀 Projects</a></li>
+                <li><a href="qa.html">🧪 QA</a></li>
+                <li><a href="blog.html">✍️ Blog</a></li>
+                <li><a href="contact.html" class="active">📧 Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile">
+            <div class="profile-header">
+                <h1><i class="fas fa-paper-plane"></i> Contact Me</h1>
+                <p class="profile-subtitle">Saves to C:\Users\mirim\OneDrive\Escritorio\html\message\messages.csv</p>
+            </div>
+            
+            <div class="profile-content">
+                <section class="section contact-section">
+                    <h2 class="section-title"><i class="fas fa-edit"></i> Send Message</h2>
+                    
+                    <div id="message" class="message"></div>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Full Name *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-comment"></i> Message *</label>
+                            <textarea name="message" required rows="6"></textarea>
+                        </div>
+                        <button type="submit" class="download-btn">
+                            <i class="fas fa-save"></i> Save to CSV
+                        </button>
+                    </form>
+                    
+                    <!-- Botón ver todos -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="button" onclick="downloadCSV()" class="download-btn" style="background: #28a745;">
+                            📊 Download messages.csv
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ruta exacta de tu carpeta
+        const FOLDER_PATH = 'C:/Users/mirim/OneDrive/Escritorio/html/message/';
+        const FILE_NAME = 'messages.csv';
+        
+        // Cargar mensajes existentes
+        let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+        
+        function saveContactMessage(name, email, message) {
+            const now = new Date();
+            const timestamp = now.toLocaleString('es-ES');
+            
+            // Nuevo mensaje
+            const newMessage = {
+                date: timestamp,
+                name: name.trim(),
+                email: email.trim(),
+                message: message.trim()
+            };
+            
+            // Agregar al inicio
+            messages.unshift(newMessage);
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+        }
+        
+        function downloadCSV() {
+            if (messages.length === 0) {
+                alert('No messages yet!');
+                return;
+            }
+            
+            // Crear CSV (formato Excel)
+            let csvContent = 'Fecha,Nombre,Email,Mensaje\n';
+            messages.forEach(msg => {
+                // Escapar comas y saltos de línea
+                const safeName = `"${msg.name.replace(/"/g, '""')}"`;
+                const safeEmail = `"${msg.email.replace(/"/g, '""')}"`;
+                const safeMessage = `"${msg.message.replace(/[\r\n,"]/g, ' ').replace(/"/g, '""')}"`;
+                
+                csvContent += `${msg.date},${safeName},${safeEmail},${safeMessage}\n`;
+            });
+            
+            // Descargar a carpeta específica
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            
+            // Forzar nombre y ruta (navegador lo pone en Downloads)
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', FILE_NAME);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            const btn = this.querySelector('.download-btn');
+            const msgDiv = document.getElementById('message');
+            
+            // Loading
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+            msgDiv.style.display = 'none';
+            
+            // Guardar
+            saveContactMessage(name, email, message);
+            
+            setTimeout(() => {
+                msgDiv.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <strong>¡GUARDADO!</strong><br>
+                    Agregado a messages.csv<br>
+                    <small>${messages.length} mensajes totales</small>
+                `;
+                msgDiv.className = 'message success';
+                msgDiv.style.display = 'block';
+                
+                this.reset();
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Save to CSV';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
