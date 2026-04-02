@@ -1,10 +1,10 @@
 :root {
     /* Colores principales */
-    --primary-gradient: linear-gradient(135deg, #65697d 0%, #3f2c51 100%);
-    --primary-color: #924a6a;
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-color: #667eea;
     --secondary-color: #764ba2;
-    --text-primary: #000000;
-    --text-secondary: #000000;
+    --text-primary: #333;
+    --text-secondary: #666;
     --bg-light: #f8f9ff;
     --white: #ffffff;
     --shadow-light: rgba(0,0,0,0.1);
@@ -22,5 +22,5 @@
     /* Bordes y sombras */
     --border-radius: 10px;
     --border-radius-lg: 20px;
-    --box-shadow: 0 10px 30px var(--shadow-light);
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
