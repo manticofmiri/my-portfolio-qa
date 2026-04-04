@@ -9,7 +9,7 @@
 .skills-section {
     margin-bottom: 2.75rem;
     padding-bottom: 2.25rem;
-    border-bottom: 1px solid rgba(195, 86, 86, 0.1);
+    border-bottom: 1px solid rgba(200, 150, 175, 0.12);
     animation: fadeInUp 0.55s ease both;
 }
 
@@ -84,8 +84,8 @@
     align-items: center;
     gap: 1rem;
     padding: 1.1rem 1.35rem;
-    background: var(--bg-blush);
-    border: 1px solid rgba(195, 86, 86, 0.1);
+    background: var(--card-bg-soft);
+    border: 1px solid rgba(200, 150, 175, 0.14);
     border-left: 3px solid var(--rose);
     border-radius: var(--r-md);
     transition: transform 0.22s ease, box-shadow 0.22s ease, border-left-color 0.22s ease;
@@ -129,8 +129,8 @@
 
 .experience-item,
 .education-item {
-    background: var(--bg-blush);
-    border: 1px solid rgba(195, 86, 86, 0.1);
+    background: var(--card-bg-soft);
+    border: 1px solid rgba(200, 150, 175, 0.14);
     border-left: 3px solid var(--rose);
     border-radius: var(--r-md);
     padding: 1.4rem;
@@ -167,7 +167,7 @@
 
 .experience-item ul {
     padding-left: 1.1rem;
-    color: var(--text-mid);
+    color: var(--text-muted);
 }
 
 .experience-item ul li {

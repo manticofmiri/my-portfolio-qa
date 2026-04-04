@@ -23,14 +23,43 @@
         </div>
     </nav>
     <section class="hero">
-        <div>
-            <h1>¡Hi! I'm <span style="background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Miriam Costa Manticof</span></h1>
-            <p class="subtitle">Looking for new opportunities |QA Tester | Manual Testing | </p>
+        <div class="hero-inner">
+            <h1>¡Hi! I'm <span class="hero-name">Miriam Costa Manticof</span></h1>
+            <p class="subtitle typewriter-block" aria-live="polite">
+                <span id="typewriter-out"></span><span class="typewriter-cursor" aria-hidden="true">▍</span>
+            </p>
             <div class="cta-buttons">
                 <a href="cv.html" class="btn btn-primary">📄 My CV</a>
                 <a href="project.html" class="btn btn-secondary">🚀 My Projects</a>
             </div>
         </div>
     </section>
+    <script>
+        (function () {
+            var full = "Open to new opportunities · Trilingual QA engineer.";
+            var out = document.getElementById("typewriter-out");
+            var cta = document.querySelector(".hero .cta-buttons");
+            var cursor = document.querySelector(".typewriter-cursor");
+            if (!out) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                out.textContent = full;
+                if (cursor) cursor.classList.add("is-hidden");
+                if (cta) cta.classList.add("is-visible");
+                return;
+            }
+            var i = 0;
+            var ms = 48;
+            function tick() {
+                if (i < full.length) {
+                    out.textContent += full.charAt(i);
+                    i++;
+                    setTimeout(tick, ms);
+                } else if (cta) {
+                    cta.classList.add("is-visible");
+                }
+            }
+            setTimeout(tick, 450);
+        })();
+    </script>
 </body>
 </html>

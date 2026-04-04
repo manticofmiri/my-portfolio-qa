@@ -5,42 +5,52 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
+html {
+    color-scheme: dark;
+}
+
 :root {
-    /* ── Brand Gradient ── */
-    --grad-main:    linear-gradient(135deg, #cd6262 0%, #4a1085 100%);
-    --grad-soft:    linear-gradient(135deg, rgba(158, 39, 39, 0.15) 0%, rgba(230, 230, 230, 0.15) 100%);
-    --grad-glow:    linear-gradient(135deg, rgba(9, 8, 8, 0.35) 0%, rgba(153,112,195,0.35) 100%);
+     --grad-main:    linear-gradient(135deg, #9c4a5c 0%, #9c7ca9 42%, #6200b8 100%);
+    --grad-body:    radial-gradient(ellipse 110% 70% at 50% -15%, rgba(180, 90, 120, 0.28), transparent 52%),
+                    radial-gradient(ellipse 45% 35% at 95% 25%, rgba(110, 70, 150, 0.18), transparent),
+                    radial-gradient(ellipse 40% 30% at 5% 85%, rgba(140, 60, 90, 0.1), transparent),
+                    linear-gradient(165deg, #b9a1dd 0%, #393042 38%, #0c0812 100%);
+    --grad-soft:    linear-gradient(145deg, rgba(45, 28, 52, 0.9) 0%, rgba(22, 16, 32, 0.95) 100%);
+    --grad-glow:    linear-gradient(135deg, rgba(40, 18, 35, 0.5) 0%, rgba(90, 50, 120, 0.35) 100%);
+    /* ── Brand Colors (dusty rose + orchid) ── */
+    --rose:         #d8a0b0;
+    --violet:       #c49ae0;
+    --rose-light:   #e8b8c8;
+    --violet-light: #d4b8ec;
+    --blush:        rgba(245, 200, 220, 0.1);
 
-    /* ── Brand Colors ── */
-    --rose:         #bb6868;
-    --violet:       #a978db;
-    --rose-light:   #d97b7b;
-    --violet-light: #b48fd8;
-    --blush:        #f5e6f0;
+    /* ── Surfaces ── */
+    --dark-bg:      #0c0812;
+    --dark-surface: #161020;
+    --dark-card:    #1e182c;
+    --dark-card-h:  #282238;
+    --dark-border:  rgba(210, 150, 175, 0.22);
+    --card-bg:      #181222;
+    --card-bg-soft: rgba(220, 170, 190, 0.06);
 
-    /* ── Dark Background (QA page & modals) ── */
-    --dark-bg:      #100d18;
-    --dark-surface: #1a1525;
-    --dark-card:    #211b30;
-    --dark-card-h:  #2a2240;
-    --dark-border:  rgba(195, 86, 86, 0.2);
+    /* ── Light accents (buttons on dark hero) ── */
+    --white:        #fff8fb;
+    --bg-light:     #1a1522;
+    --bg-blush:     var(--card-bg-soft);
 
-    /* ── Light Background (rest of site) ── */
-    --white:        #ffffff;
-    --bg-light:     #f8f6ff;
-    --bg-blush:     #fdf4f8;
+    /* ── Text on dark UI ── */
+    --text-dark:    #ede6f5;
+    --text-mid:     #f8f2fc;
+    --text-muted:   rgba(228, 218, 240, 0.88);
+    --text-soft:    #9e8fb5;
+    --text-white:   #f5ecf8;
+    --text-white-m: rgba(240, 228, 248, 0.72);
+    --primary-color: var(--rose-light);
 
-    /* ── Text ── */
-    --text-dark:    #1a1a2e;
-    --text-mid:     #ffffff;
-    --text-soft:    #40414f;
-    --text-white:   #f0eaf8;
-    --text-white-m: rgba(240,234,248,0.7);
-
-    /* ── Shadows ── */
-    --shadow-sm:    rgba(153,112,195,0.12);
-    --shadow-md:    rgba(153,112,195,0.22);
-    --shadow-rose:  rgba(195,86,86,0.18);
+    /* ── Shadows (soft glow on dark) ── */
+    --shadow-sm:    rgba(120, 80, 160, 0.18);
+    --shadow-md:    rgba(90, 50, 120, 0.35);
+    --shadow-rose:  rgba(200, 100, 130, 0.22);
 
     /* ── Typography ── */
     --font:         'Poppins', sans-serif;
@@ -52,6 +62,11 @@
     --r-lg:  22px;
     --r-xl:  32px;
     --r-pill: 999px;
+}
+
+::selection {
+    background: rgba(200, 130, 165, 0.38);
+    color: var(--text-white);
 }
 
 
@@ -69,7 +84,8 @@ body {
     font-family: var(--font);
     line-height: 1.6;
     color: var(--text-dark);
-    background: var(--grad-main);
+    background: var(--grad-body);
+    background-color: var(--dark-bg);
     min-height: 100vh;
 }
 
@@ -83,11 +99,11 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 2px 24px var(--shadow-sm);
-    border-bottom: 1px solid rgba(195, 86, 86, 0.1);
+    background: rgba(12, 8, 18, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
+    border-bottom: 1px solid rgba(200, 140, 170, 0.12);
 }
 
 .nav-container {
@@ -102,14 +118,15 @@ body {
 
 .logo {
     font-size: 1.15rem;
-    font-weight: 700;
-    background: var(--grad-main);
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #9368a2 38%, #c084fc 72%, #a855f7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     white-space: nowrap;
     letter-spacing: -0.01em;
 }
+
 
 .nav-links {
     list-style: none;
@@ -192,15 +209,16 @@ body {
 }
 
 .profile {
-    background: var(--white);
+    background: var(--card-bg);
     border-radius: var(--r-xl);
-    box-shadow: 0 20px 60px var(--shadow-md);
+    border: 1px solid rgba(200, 150, 175, 0.12);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(180, 120, 160, 0.06);
     overflow: hidden;
     margin-bottom: 30px;
 }
 
 .profile-header {
-    background: var(--grad-main);
+    background: linear-gradient(135deg, #5c2840 0%, #4a2468 38%, #2a1848 100%);
     color: var(--text-white);
     padding: 44px 40px;
     text-align: center;
@@ -270,6 +288,29 @@ body {
     text-align: center;
     color: var(--text-white);
     padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 20%, rgba(180, 90, 120, 0.2), transparent 55%);
+    pointer-events: none;
+}
+
+.hero > div {
+    position: relative;
+    z-index: 1;
+}
+
+.hero .hero-name,
+.hero h1 .hero-name {
+    background: linear-gradient(135deg, #fff8fc 0%, #f0c8dc 45%, #d8a8e8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero h1 {
@@ -308,20 +349,20 @@ body {
 }
 
 .btn-primary {
-    background: var(--white);
-    color: var(--rose);
-    box-shadow: 0 8px 28px rgba(255,255,255,0.25);
+    background: linear-gradient(165deg, #fff5f9 0%, #f5dce8 100%);
+    color: #6b2d48;
+    box-shadow: 0 8px 28px rgba(200, 120, 150, 0.35);
 }
 
 .btn-secondary {
-    background: transparent;
+    background: rgba(255, 240, 248, 0.08);
     color: var(--text-white);
-    border: 2px solid rgba(255,255,255,0.75);
+    border: 2px solid rgba(232, 190, 210, 0.55);
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
 }
 
 

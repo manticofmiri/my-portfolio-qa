@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,77 +96,6 @@
 
         </div>
 
-        <!-- MODALS -->
-        <div class="modal-overlay" id="m1" onclick="closeOnOverlay(event, 'm1')">
-            <div class="modal">
-                <button class="modal-close" onclick="closeModal('m1')"><i class="fa fa-xmark"></i></button>
-                <div class="modal-tag"><span class="tag tag-til">💡 TIL</span></div>
-                <h2>xfail is not the same as ignoring a test</h2>
-                <div class="modal-body">
-                    <p>When I first used <strong>@pytest.mark.xfail</strong>, I thought it was just a way to skip tests that don't pass yet. I was wrong.</p>
-                    <p><strong>xfail</strong> means <em>I expect this to fail, and here's why</em> — it's a way to document a known bug without hiding it. If the test suddenly passes, Pytest marks it as <strong>XPASS</strong> and alerts you. That's actually useful: it means the bug got fixed, intentionally or not.</p>
-                    <div class="card-code">@pytest.mark.xfail(reason="BUG-004: table field accepts letters")<br>def test_table_number_only_accepts_digits():<br>&nbsp;&nbsp;&nbsp;&nbsp;# This should fail — documenting a real bug<br>&nbsp;&nbsp;&nbsp;&nbsp;...</div>
-                    <p>In my SV Burger project, I used it to document 3 real bugs I found. It felt like writing a bug report inside the code itself — which is exactly what it is.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-overlay" id="m2" onclick="closeOnOverlay(event, 'm2')">
-            <div class="modal">
-                <button class="modal-close" onclick="closeModal('m2')"><i class="fa fa-xmark"></i></button>
-                <div class="modal-tag"><span class="tag tag-concept">📖 Concept</span></div>
-                <h2>What is the Page Object Model, and why does it matter?</h2>
-                <div class="modal-body">
-                    <p>Imagine you have 10 tests that all click the same login button. Then the dev changes the button's ID. Now you have to update 10 tests. That's a maintenance nightmare.</p>
-                    <p>With the <strong>Page Object Model (POM)</strong>, you define the button <em>once</em> in a page class, and all tests use that class. One change, one fix.</p>
-                    <div class="card-code">class LoginPage:<br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, driver):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.driver = driver<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.btn = driver.find_element(By.ID, "login-btn")<br><br>&nbsp;&nbsp;&nbsp;&nbsp;def click_login(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.btn.click()</div>
-                    <p>POM isn't just a pattern — it's a way of thinking about maintainability. Your tests should break because the <strong>behavior</strong> changed, not because someone renamed a CSS class.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-overlay" id="m3" onclick="closeOnOverlay(event, 'm3')">
-            <div class="modal">
-                <button class="modal-close" onclick="closeModal('m3')"><i class="fa fa-xmark"></i></button>
-                <div class="modal-tag"><span class="tag tag-bug">🐛 Bug Found</span></div>
-                <h2>The field that accepted anything — and why that's a problem</h2>
-                <div class="modal-body">
-                    <p>While testing <strong>SV Burger</strong>, I found that the table number field accepted letters. You could type "abc" and the app wouldn't complain.</p>
-                    <p>It sounds minor. But think about it: if that value gets stored in a database expecting an integer, you get a crash <em>downstream</em> — far from where the actual mistake happened. That's why input validation matters at the UI level, not just the backend.</p>
-                    <p>Finding this reminded me that negative testing isn't about breaking things for fun. It's about asking: <strong>what happens when a real user makes a mistake?</strong></p>
-                    <div class="card-code">BUG-004 | Severity: Medium<br>Field: Table Number<br>Expected: Only numeric input accepted<br>Actual: Accepts alphabetical characters<br>Status: Documented with @pytest.mark.xfail</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-overlay" id="m4" onclick="closeOnOverlay(event, 'm4')">
-            <div class="modal">
-                <button class="modal-close" onclick="closeModal('m4')"><i class="fa fa-xmark"></i></button>
-                <div class="modal-tag"><span class="tag tag-til">💡 TIL</span></div>
-                <h2>CI/CD made me realize testing is a team responsibility</h2>
-                <div class="modal-body">
-                    <p>Setting up <strong>GitHub Actions</strong> to run my tests automatically on every push was a turning point for me.</p>
-                    <p>Before that, tests felt like something you run manually at the end. After that, they became part of the workflow — every change is validated, every regression is caught early.</p>
-                    <div class="card-code">name: Run Automated Tests<br>on: [push]<br>jobs:<br>&nbsp;&nbsp;test:<br>&nbsp;&nbsp;&nbsp;&nbsp;runs-on: ubuntu-latest<br>&nbsp;&nbsp;&nbsp;&nbsp;steps:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/checkout@v3<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: pytest test/</div>
-                    <p>It also made me think about how QA fits in a team: it's not a final checkpoint. It's a continuous safety net. And automation is what makes that net scalable.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-overlay" id="m5" onclick="closeOnOverlay(event, 'm5')">
-            <div class="modal">
-                <button class="modal-close" onclick="closeModal('m5')"><i class="fa fa-xmark"></i></button>
-                <div class="modal-tag"><span class="tag tag-concept">📖 Concept</span></div>
-                <h2>Boundary testing: the edges are where bugs hide</h2>
-                <div class="modal-body">
-                    <p>Most bugs don't live in the middle. They live at the edges.</p>
-                    <p>If a field accepts between 1 and 3 items, test with <strong>0, 1, 3, and 4</strong> — not just 2. The happy path is rarely where things break.</p>
-                    <div class="card-code">Test cases for "select meals (max 3)":<br>✅ Select 1 meal   → should pass<br>✅ Select 3 meals  → should pass (limit)<br>❌ Select 0 meals  → should show error<br>❌ Select 4 meals  → should be blocked</div>
-                    <p>In my project, I found that the app allowed selecting <strong>more than 3 meal types</strong> when it shouldn't. The happy path worked fine. The boundary didn't. That's exactly why we test the edges.</p>
-                </div>
-            </div>
-        </div>
-        
         <!-- MODALS -->
         <div class="modal-overlay" id="m1" onclick="closeOnOverlay(event, 'm1')">
             <div class="modal">
