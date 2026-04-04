@@ -1,64 +1,36 @@
 /* ============================================================
-   PROJECT.CSS — Projects Portfolio
+   PROJECT.CSS — Miriam Costa Manticof
+   Only project-specific styles. Requires general.css
    ============================================================ */
 
 
-/* ============================================================
-   CONTENT CARD — fondo blanco principal
-   ============================================================ */
-
-.content-card {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    margin-top: 1.5rem;
-    box-shadow: 0 2px 12px var(--shadow);
-}
-
-
-/* ============================================================
-   INTRO
-   ============================================================ */
-
-.projects-intro p {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    max-width: 680px;
-}
-
-
-/* ============================================================
-   PROJECT CARD — imagen izquierda, texto derecha
-   ============================================================ */
+/* ── PROJECT CARD ── */
 
 .project-card {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 2rem;
+    grid-template-columns: 260px 1fr;
+    gap: 0;
     background: var(--white);
-    border: 1px solid rgba(136, 39, 39, 0.15);
-    border-left: 3px solid var(--primary-color);
-    border-radius: 14px;
+    border: 1px solid rgba(195, 86, 86, 0.12);
+    border-left: 3px solid var(--rose);
+    border-radius: var(--r-lg);
     overflow: hidden;
-    box-shadow: 0 2px 12px var(--shadow);
+    box-shadow: 0 4px 18px var(--shadow-sm);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     margin-bottom: 1.5rem;
 }
 
 .project-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 32px var(--shadow-medium);
+    box-shadow: 0 16px 40px var(--shadow-md);
 }
 
 
-/* ============================================================
-   PROJECT IMAGE
-   ============================================================ */
+/* ── PROJECT IMAGE ── */
 
 .project-image {
-    background: linear-gradient(135deg, rgba(136, 39, 39, 0.08), rgba(153, 112, 195, 0.08));
-    min-height: 220px;
+    background: var(--grad-soft);
+    min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,170 +45,126 @@
     display: block;
 }
 
-.project-image-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--primary-color);
-    opacity: 0.45;
-}
 
-.project-image-placeholder i {
-    font-size: 2.5rem;
-}
-
-.project-image-placeholder span {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-
-/* ============================================================
-   PROJECT BODY
-   ============================================================ */
+/* ── PROJECT BODY ── */
 
 .project-body {
-    padding: 1.75rem 1.75rem 1.75rem 0;
+    padding: 1.6rem 1.6rem 1.6rem 1.4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.85rem;
+    gap: 0.8rem;
 }
 
 .project-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--text-dark);
     line-height: 1.3;
 }
 
 .project-description {
-    font-size: 0.93rem;
-    color: var(--text-secondary);
+    font-size: 0.9rem;
+    color: var(--text-mid);
     line-height: 1.65;
 }
 
 
-/* ============================================================
-   TAGS — tecnologías usadas
-   ============================================================ */
+/* ── TAGS ── */
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.45rem;
 }
 
 .tag {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    padding: 4px 12px;
-    border-radius: 50px;
-    background: rgba(136, 39, 39, 0.08);
-    color: var(--primary-color);
-    border: 1px solid rgba(136, 39, 39, 0.2);
+    padding: 3px 11px;
+    border-radius: var(--r-pill);
+    background: rgba(195, 86, 86, 0.07);
+    color: var(--rose);
+    border: 1px solid rgba(195, 86, 86, 0.18);
 }
 
 
-/* ============================================================
-   GITHUB LINK
-   ============================================================ */
+/* ── GITHUB LINK ── */
 
 .project-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.88rem;
+    gap: 0.45rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--rose);
     text-decoration: none;
-    padding: 0.5rem 1.1rem;
-    border: 1.5px solid var(--primary-color);
-    border-radius: 50px;
+    padding: 0.45rem 1.1rem;
+    border: 1.5px solid var(--rose);
+    border-radius: var(--r-pill);
     width: fit-content;
-    transition: background 0.25s ease, color 0.25s ease;
+    transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
 }
 
 .project-link:hover {
-    background: var(--primary-color);
+    background: var(--grad-main);
     color: var(--white);
+    border-color: transparent;
 }
 
 
-/* ============================================================
-   COMING SOON GRID
-   ============================================================ */
+/* ── COMING SOON ── */
 
 .coming-soon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1.1rem;
     margin-top: 0.5rem;
 }
 
 .coming-soon-card {
-    background: var(--white);
-    border: 1px dashed rgba(136, 39, 39, 0.3);
-    border-radius: 12px;
-    padding: 1.75rem 1rem;
+    background: var(--bg-blush);
+    border: 1.5px dashed rgba(195, 86, 86, 0.25);
+    border-radius: var(--r-md);
+    padding: 1.6rem 1rem;
     text-align: center;
-    color: var(--text-secondary);
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    color: var(--text-mid);
+    transition: border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .coming-soon-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: 0 6px 18px var(--shadow);
+    border-color: var(--violet);
+    box-shadow: 0 6px 18px var(--shadow-sm);
 }
 
 .coming-soon-card i {
-    font-size: 1.6rem;
-    color: var(--primary-color);
-    opacity: 0.5;
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
     display: block;
+    margin-bottom: 0.65rem;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.6;
 }
 
 .coming-soon-card p {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
     line-height: 1.4;
 }
 
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* ── RESPONSIVE ── */
 
 @media (max-width: 768px) {
-    .content-card {
-        padding: 1.25rem;
-        margin-top: 1rem;
-    }
-
-    .project-card {
-        grid-template-columns: 1fr;
-    }
-
-    .project-image {
-        min-height: 180px;
-    }
-
-    .project-body {
-        padding: 1.25rem;
-    }
-
-    .coming-soon-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+    .project-card { grid-template-columns: 1fr; }
+    .project-image { min-height: 170px; }
+    .project-body { padding: 1.2rem; }
+    .coming-soon-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
-    .coming-soon-grid {
-        grid-template-columns: 1fr;
-    }
+    .coming-soon-grid { grid-template-columns: 1fr; }
 }
